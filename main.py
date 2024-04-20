@@ -1,10 +1,24 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from bisection import bisection
 
 app = Flask(__name__)
 
 @app.route("/")
-def home():
+def index():
     return render_template("app.html")
+
+@app.route("/query", methods=["POST"])
+def query():
+    data = {
+        "minval" : request.form["minval"],
+        "maxval" : request.form["maxval"],
+        "rerror" : request.form["rerror"],
+        "function" : request.form["function"]
+    }
+
+    table = bisection()
+
+    return render_template("app.html", **data, table=table)
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
