@@ -9,14 +9,14 @@
 <style>
 .center {
     margin: auto;
-    width: 15%;
+    width: 30%;
 }
 </style>
 
 <body>
     <div class="center">
         <h1>Finding Roots</h1>
-        <form>
+        <form action="/query" method="post">
             <label for="minval">Mininimum Value:</label><br>
             <input type="text" id="minval" name="minval"><br>
             <label for="maxval">Maximum Value:</label><br>
@@ -28,5 +28,24 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+    <div class="center">
+        <h1> {{ function }}</h1>
+        <p> {{ maxval }} </p>
+        <p> {{ minval }} </p>
+        <p> {{ rerror }} </p>
+    </div>
+    {% if function %}
+    <div class="center">
+        <table border="1">
+            {% for row in table %}
+            <tr>
+                {% for item in row %}
+                <td> {{ item }} </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
 </body>
 </html>
