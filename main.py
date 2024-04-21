@@ -10,13 +10,13 @@ def index():
 @app.route("/query", methods=["POST"])
 def query():
     data = {
+        "function" : request.form["function"],
         "minval" : request.form["minval"],
         "maxval" : request.form["maxval"],
-        "rerror" : request.form["rerror"],
-        "function" : request.form["function"]
+        "rerror" : request.form["rerror"]
     }
 
-    table = bisection()
+    table = bisection(data)
 
     return render_template("app.html", **data, table=table)
 

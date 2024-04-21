@@ -1,8 +1,9 @@
 import math
 from romu_math import *
 
+function_str = ""
+
 # substituting x to the function
-# INPUT HERE THE FUNCTION
 def substitute(x):
     my_round(x, 5)
     ans = math.cos(x) - x * (math.e ** x)
@@ -28,13 +29,15 @@ def print_answer(answer):
         iteration[-1] = my_round(iteration[-1], 2)
         print(iteration)
 
-def bisection():
+def bisection(data):
     # The CONSTANTS ( or the given values )
-    relative_error = 0
-    num_iterations = 15
+    relative_error = data["rerror"]
+    num_iterations = 1000
 
-    left = -5
-    right = -3.5
+    left = data["minval"]
+    right = data["maxval"]
+
+    function_str = data["function"]
 
     COL_NUM = 7
 
