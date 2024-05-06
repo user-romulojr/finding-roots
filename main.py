@@ -11,12 +11,26 @@ def index():
 def query():
     data = {
         "function" : request.form["function"],
-        "minval" : request.form["minval"],
-        "maxval" : request.form["maxval"],
-        "rerror" : request.form["rerror"]
+        "minval" : float(request.form["minval"]),
+        "maxval" : float(request.form["maxval"]),
+        "rerror" : float(request.form["rerror"])
     }
 
     table = bisection(data)
+
+    '''
+    TEST DATA #1:
+    1.75
+    3.25
+    0.02
+    x^3 - 0.73x^2 - 44.0085x + 100.387125
+
+    TEST DATA #2:
+    -5
+    -3.5
+    0.02
+    cosx - xe^x
+    '''
 
     return render_template("app.html", **data, table=table)
 
