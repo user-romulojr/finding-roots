@@ -81,3 +81,4 @@ def sign(x0, x1):
 def get_error(cur, prv):
     absolute_error = abs(cur-prv)
     ans = abs(absolute_error/cur) * 100
+    return ans
