@@ -9,7 +9,7 @@
 <style>
     .center {
         margin: auto;
-     width: 30%;
+        width: 30%;
     }
 
     body {
@@ -48,15 +48,41 @@
     <div class="center">
         <h1>Finding Roots</h1>
         <div class="dropdown">
-            <button class="dropbtn">Choose Method</button>
+            <button class="dropbtn">Bisection Method</button>
             <div class="dropdown-content">
-                <a href="/bisection">Bisection Method</a>
                 <a href="/fixed-point">Fixed Point Method</a>
                 <a href="/newton-raphson">Newton-Raphson Method</a>
                 <a href="/regula-falsi">Regula Falsi Method</a>
                 <a href="/secant">Secant Method</a>
             </div>
         </div>
+        <form method="POST">
+            <label for="minval">Mininimum Value:</label><br>
+            <input type="text" id="minval" name="minval"><br>
+            <label for="maxval">Maximum Value:</label><br>
+            <input type="text" id="maxval" name="maxval"><br>
+            <label for="rerror">Relative Error:</label><br>
+            <input type="text" id="rerror" name="rerror"><br><br>
+            <label for="function">Function:</label><br>
+            <input type="text" id="function" name="function"><br><br>
+            <input type="submit" value="Submit">
+        </form>
     </div>
+
+    {% if table %}
+    <br><br>
+    
+    <div class="center">
+        <table border="1">
+            {% for row in table %}
+            <tr>
+                {% for item in row %}
+                <td> {{ item }} </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
 </body>
 </html>

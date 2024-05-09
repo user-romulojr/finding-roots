@@ -9,7 +9,7 @@ def next(x0, x1):
     return my_round(ans, 5)
 
 
-def bisection(data):
+def bisection_method(data):
     relative_error = data["rerror"]
     num_iterations = 1000
 

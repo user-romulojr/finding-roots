@@ -58,7 +58,7 @@ def infix_to_postfix(func):
                 operator_stack.pop()
             operator_stack.pop()
         elif i in operations:
-            while (not operator_stack.empty() and not operator_stack.top() in operations) or (not operator_stack.empty() and operations[i]<= operations[operator_stack.top()]):
+            while not operator_stack.empty() and (not operator_stack.top() in operations or operations[i]<= operations[operator_stack.top()]):
                 output.append(operator_stack.top())
                 operator_stack.pop()
             operator_stack.push(i)
@@ -135,20 +135,3 @@ def substitute(value, func):
             operand_stack.push(result)
     
     return operand_stack.top()
-
-
-a = "cos x - xe^x"
-
-print(parse_function(a))
-ff = infix_to_postfix(a)
-print(ff)
-
-#funcc = parse_function(a)
-#for i in funcc:
-#    if i in operations:
- #       print(i)
-
-#res = substitute(69, func_val)
-#print(res)
-
-print("cos" in special_func)
