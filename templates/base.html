@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Roots</title>
+</head>
+
+<style>
+    .center {
+        margin: auto;
+        width: 30%;
+    }
+
+    body {
+        background-color: pink;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #ddd;}
+
+    .dropdown:hover .dropdown-content {display: block;}
+
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+
+<body>
+    <div class="center">
+        <h1>Finding Roots</h1>
+        <div class="dropdown">
+            <button class="dropbtn">{% block current method} <!-- Insert the current method in this block--> {% endblock %}</button>
+            <div class="dropdown-content">
+                {% block other methods %}
+                    <!-- Insert the input fields in this block-->
+                {% block other methods %}
+            </div>
+        </div>
+        <form method="POST">
+            {% block input fields %}
+                <!-- Insert the input fields in this block-->
+            {% endblock %}
+        </form>
+    </div>
+
+    {% if table %}
+    <br><br>
+    
+    <div class="center">
+        <table border="1">
+            {% for row in table %}
+            <tr>
+                {% for item in row %}
+                <td> {{ item }} </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+</body>
+</html>

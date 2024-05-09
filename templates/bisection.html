@@ -1,88 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finding Roots</title>
-</head>
+{% extends "base.html" %}
 
-<style>
-    .center {
-        margin: auto;
-        width: 30%;
-    }
+{% block current method %} Bisection Method {% endblock %}
 
-    body {
-        background-color: pink;
-    }
+{% block other methods %} 
+    <a href="/fixed-point">Fixed Point Method</a>
+    <a href="/newton-raphson">Newton-Raphson Method</a>
+    <a href="/regula-falsi">Regula Falsi Method</a>
+    <a href="/secant">Secant Method</a>
+{% endblock %}
 
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {background-color: #ddd;}
-
-    .dropdown:hover .dropdown-content {display: block;}
-
-    .dropdown:hover .dropbtn {background-color: #3e8e41;}
-</style>
-
-<body>
-    <div class="center">
-        <h1>Finding Roots</h1>
-        <div class="dropdown">
-            <button class="dropbtn">Bisection Method</button>
-            <div class="dropdown-content">
-                <a href="/fixed-point">Fixed Point Method</a>
-                <a href="/newton-raphson">Newton-Raphson Method</a>
-                <a href="/regula-falsi">Regula Falsi Method</a>
-                <a href="/secant">Secant Method</a>
-            </div>
-        </div>
-        <form method="POST">
-            <label for="minval">Mininimum Value:</label><br>
-            <input type="text" id="minval" name="minval"><br>
-            <label for="maxval">Maximum Value:</label><br>
-            <input type="text" id="maxval" name="maxval"><br>
-            <label for="rerror">Relative Error:</label><br>
-            <input type="text" id="rerror" name="rerror"><br><br>
-            <label for="function">Function:</label><br>
-            <input type="text" id="function" name="function"><br><br>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-
-    {% if table %}
-    <br><br>
-    
-    <div class="center">
-        <table border="1">
-            {% for row in table %}
-            <tr>
-                {% for item in row %}
-                <td> {{ item }} </td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-    {% endif %}
-</body>
-</html>
+{% block input fields %}
+    <label for="minval">Mininimum Value:</label><br>
+    <input type="text" id="minval" name="minval"><br>
+    <label for="maxval">Maximum Value:</label><br>
+    <input type="text" id="maxval" name="maxval"><br>
+    <label for="rerror">Relative Error:</label><br>
+    <input type="text" id="rerror" name="rerror"><br><br>
+    <label for="function">Function:</label><br>
+    <input type="text" id="function" name="function"><br><br>
+    <input type="submit" value="Submit">
+{% endblock %}
