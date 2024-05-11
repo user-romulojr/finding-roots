@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Roots</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='page_layout.css') }}">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>find roots</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Choose Method</button>
+            <div class="dropdown-content">
+                <a href="/bisection">Bisection Method</a>
+                <a href="/fixed-point">Fixed Point Method</a>
+                <a href="/newton-raphson">Newton-Raphson Method</a>
+                <a href="/regula-falsi">Regula Falsi Method</a>
+                <a href="/secant">Secant Method</a>
+            </div>
+            <div class="dropdown-arrow"></div>
+        </div>
+        <form action="/query" method="post">
+            <div class="form-row">
+                <input type="text" id="function" name="function" placeholder="Enter function" >
+                <div class="hover-box">Enter function</div>
+                <br><br>
+            </div>
+            <div class="form-container">
+                <div class="labels-1">
+                    <label for="maxval">Point:</label>
+                    <label for="rerror">Relative Error:</label>
+                </div>
+                <div class="inputs-1">
+                    <input type="text" id="point" name="point" placeholder="Enter point">
+                    <input type="text" id="rerror" name="rerror" placeholder="Enter relative error">
+                </div>
+            </div>
+            <div class="form-sub">
+            <input type="submit" value="Calculate">
+            </div>
+        
+        </form>
+    </div>
+
+    <div class="container">
+        <h1> {{ function }}</h1>
+        <p> {{ maxval }} </p>
+        <p> {{ minval }} </p>
+        <p> {{ rerror }} </p>
+    </div>
+    {% if function %}
+    <div class="container">
+        <table border="1">
+            {% for row in table %}
+            <tr>
+                {% for item in row %}
+                <td> {{ item }} </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+</body>
+</html>
