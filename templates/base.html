@@ -6,15 +6,12 @@
     <title>Find Roots</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='page_layout.css') }}">
     
-    <title>Find Roots</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='page_layout.css') }}">
-    
 <body>
     <div class="container">
         <h1>find roots</h1>
         <div class="dropdown">
             <button class="dropbtn"> 
-                {% block other_methods %}
+                {% block current_method %}
                     <!-- Insert the current method in this block
                         Choose Method
                     --> 
@@ -33,7 +30,7 @@
             </div>
             <div class="dropdown-arrow"></div>
         </div>
-        <form action="/query" method="post">
+        <form method="post">
             <div class="form-row">
                 <input type="text" id="function" name="function"placeholder="Enter function">
             </div>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block current_method %} 
+    Secant Method 
+{% endblock %}
+
+{% block other_methods %} 
+    <a href="/bisection">Bisection Method</a>
+    <a href="/fixed-point">Fixed Point Method</a>
+    <a href="/newton-raphson">Newton-Raphson Method</a>
+    <a href="/regula-falsi">Regula Falsi Method</a>
+{% endblock %}
+
+{% block input_labels %}
+    <label for="minval">Minimum Value</label>
+    <label for="maxval">Maximum Value</label>
+    <label for="rerror">Relative Error</label>
+{% endblock %}
+
+{% block input_fields %}
+    <input type="number" id="minval" name="minval" step="any" placeholder="Enter minimum value" required>
+    <input type="number" id="maxval" name="maxval" step="any" placeholder="Enter maximum value" required>
+    <input type="number" id="rerror" name="rerror" step="any" placeholder= "Enter relative error" required>
+{% endblock %}

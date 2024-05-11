@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block current_method %} 
+    Fixed Point Method 
+{% endblock %}
+
+{% block other_methods %} 
+    <a href="/bisection">Bisection Method</a>
+    <a href="/newton-raphson">Newton-Raphson Method</a>
+    <a href="/regula-falsi">Regula Falsi Method</a>
+    <a href="/secant">Secant Method</a>
+{% endblock %}
+
+{% block input_labels %}
+    <label for="it-function">Iteration Function</label>
+    <label for="point">Point</label>
+    <label for="rerror">Relative Error</label>
+{% endblock %}
+
+
+{% block input_fields %}
+    <input type="text" id="it-function" name="it-function" placeholder= "Enter iteration function" required>
+    <input type="number" id="point" name="point" step="any" placeholder= "Enter starting point" required>
+    <input type="number" id="rerror" name="rerror" step="any" placeholder= "Enter relative error" required>
+{% endblock %}
