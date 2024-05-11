@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
-{% block current method %} Newton-Raphson Method {% endblock %}
+{% block current_method %} Newton-Raphson Method {% endblock %}
 
-{% block other methods %} 
+{% block other_methods %} 
     <a href="/bisection">Bisection Method</a>
     <a href="/fixed-point">Fixed Point Method</a>
     <a href="/regula-falsi">Regula Falsi Method</a>
     <a href="/secant">Secant Method</a>
 {% endblock %}
 
-{% block input fields %}
+{% block input_fields %}
     <label for="point">Point:</label><br>
-    <input type="text" id="point" name="point"><br>
+    <input type="text" id="point" name="point" required><br>
     <label for="rerror">Relative Error:</label><br>
-    <input type="text" id="rerror" name="rerror"><br><br>
+    <input type="text" id="rerror" name="rerror" required><br><br>
     <label for="function">Function:</label><br>
-    <input type="text" id="function" name="function"><br><br>
+    <input type="text" id="function" name="function" required><br><br>
     <input type="submit" value="Submit">
 {% endblock %}

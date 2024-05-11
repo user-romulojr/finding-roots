@@ -48,15 +48,15 @@ def fixed_point():
 
 @app.route("/newton-raphson")
 def newton_raphson():
-    return render_template("newton_raphson")
+    return render_template("newton_raphson.html")
 
 @app.route("/regula-falsi") 
 def regula_falsi():
-    return render_template("regula_falsi")
+    return render_template("regula_falsi.html")
 
 @app.route("/secant")
 def secant():
-    return render_template("secant")
+    return render_template("secant.html")
 
 
 if __name__ == '__main__':

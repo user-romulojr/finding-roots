@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
-{% block current method %} Secant Method {% endblock %}
+{% block current_method %} Secant Method {% endblock %}
 
-{% block other methods %} 
+{% block other_methods %} 
     <a href="/bisection">Bisection Method</a>
     <a href="/fixed-point">Fixed Point Method</a>
     <a href="/newton-raphson">Newton-Raphson Method</a>
     <a href="/regula-falsi">Regula Falsi Method</a>
 {% endblock %}
 
-{% block input fields %}
+{% block input_fields %}
     <label for="minval">Mininimum Value:</label><br>
-    <input type="text" id="minval" name="minval"><br>
+    <input type="text" id="minval" name="minval" required><br>
     <label for="maxval">Maximum Value:</label><br>
-    <input type="text" id="maxval" name="maxval"><br>
+    <input type="text" id="maxval" name="maxval" required><br>
     <label for="rerror">Relative Error:</label><br>
-    <input type="text" id="rerror" name="rerror"><br><br>
+    <input type="text" id="rerror" name="rerror" required><br><br>
     <label for="function">Function:</label><br>
-    <input type="text" id="function" name="function"><br><br>
+    <input type="text" id="function" name="function" required><br><br>
     <input type="submit" value="Submit">
 {% endblock %}

@@ -48,15 +48,15 @@
     <div class="center">
         <h1>Finding Roots</h1>
         <div class="dropdown">
-            <button class="dropbtn">{% block current method} <!-- Insert the current method in this block--> {% endblock %}</button>
+            <button class="dropbtn">{% block current_method %} <!-- Insert the current method in this block--> {% endblock %}</button>
             <div class="dropdown-content">
-                {% block other methods %}
+                {% block other_methods %}
                     <!-- Insert the input fields in this block-->
-                {% block other methods %}
+                {% endblock %}
             </div>
         </div>
         <form method="POST">
-            {% block input fields %}
+           {% block input_fields %}
                 <!-- Insert the input fields in this block-->
             {% endblock %}
         </form>

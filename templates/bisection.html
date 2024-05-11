@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
-{% block current method %} Bisection Method {% endblock %}
+{% block current_method %} Bisection Method {% endblock %}
 
-{% block other methods %} 
+{% block other_methods %} 
     <a href="/fixed-point">Fixed Point Method</a>
     <a href="/newton-raphson">Newton-Raphson Method</a>
     <a href="/regula-falsi">Regula Falsi Method</a>
     <a href="/secant">Secant Method</a>
 {% endblock %}
 
-{% block input fields %}
+{% block input_fields %}
     <label for="minval">Mininimum Value:</label><br>
-    <input type="text" id="minval" name="minval"><br>
+    <input type="number" id="minval" name="minval" step="any" required><br>
     <label for="maxval">Maximum Value:</label><br>
-    <input type="text" id="maxval" name="maxval"><br>
+    <input type="number" id="maxval" name="maxval" step="any" required><br>
     <label for="rerror">Relative Error:</label><br>
-    <input type="text" id="rerror" name="rerror"><br><br>
+    <input type="number" id="rerror" name="rerror" step="any" required><br><br>
     <label for="function">Function:</label><br>
-    <input type="text" id="function" name="function"><br><br>
+    <input type="text" id="function" name="function" step="any" required><br><br>
     <input type="submit" value="Submit">
 {% endblock %}
