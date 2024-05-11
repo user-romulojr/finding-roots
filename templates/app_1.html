@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Roots</title>
+    <title>Finding Roots</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='page_layout.css') }}">
-    
+
+</head>
+
 <body>
     <div class="container">
         <h1>find roots</h1>
@@ -22,23 +24,20 @@
         </div>
         <form action="/query" method="post">
             <div class="form-row">
-                <input type="text" id="function" name="function"placeholder="Enter function">
-            
+                <input type="text" id="function" name="function" placeholder="Enter function" >
+                <div class="hover-box">Enter function</div>
+                <br><br>
             </div>
-            <div class="hover-box">Enter function</div>
             <div class="form-container">
-                <div class="labels">
-                    <label for="minval">Minimum Value</label>
-                    <label for="maxval">Maximum Value</label>
-                    <label for="rerror">Relative Error</label>
+                <div class="labels-1">
+                    <label for="maxval">Point:</label>
+                    <label for="rerror">Relative Error:</label>
                 </div>
-                <div class="inputs">
-                    <input type="text" id="minval" name="minval" placeholder="Enter minimum value">
-                    <input type="text" id="maxval" name="maxval" placeholder="Enter maximum value">
-                    <input type="text" id="rerror" name="rerror" placeholder= "Enter relative error">
+                <div class="inputs-1">
+                    <input type="text" id="point" name="point" placeholder="Enter point">
+                    <input type="text" id="rerror" name="rerror" placeholder="Enter relative error">
                 </div>
             </div>
-
             <div class="form-sub">
             <input type="submit" value="Calculate">
             </div>
@@ -46,10 +45,14 @@
         </form>
     </div>
 
+    <div class="container">
+        <h1> {{ function }}</h1>
+        <p> {{ maxval }} </p>
+        <p> {{ minval }} </p>
+        <p> {{ rerror }} </p>
+    </div>
     {% if function %}
-    <br><br>
-    
-    <div class="center">
+    <div class="container">
         <table border="1">
             {% for row in table %}
             <tr>
