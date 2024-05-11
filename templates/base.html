@@ -3,79 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finding Roots</title>
-</head>
-
-<style>
-    .center {
-        margin: auto;
-        width: 30%;
-    }
-
-    body {
-        background-color: pink;
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {background-color: #ddd;}
-
-    .dropdown:hover .dropdown-content {display: block;}
-
-    .dropdown:hover .dropbtn {background-color: #3e8e41;}
-</style>
-
+    <title>Find Roots</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='page_layout.css') }}">
+    
 <body>
-    <div class="center">
-        <h1>Finding Roots</h1>
+    <div class="container">
+        <h1>find roots</h1>
         <div class="dropdown">
-            <button class="dropbtn">{% block current_method %} <!-- Insert the current method in this block--> {% endblock %}</button>
+            <button class="dropbtn"> 
+                {% block current_method %}
+                    <!-- Insert the current method in this block
+                        Choose Method
+                    --> 
+                {% endblock %}
+            </button>
             <div class="dropdown-content">
                 {% block other_methods %}
-                    <!-- Insert the input fields in this block-->
+                    <!-- Insert the other methods in this block
+                        <a href="/bisection">Bisection Method</a>
+                        <a href="/fixed-point">Fixed Point Method</a>
+                        <a href="/newton-raphson">Newton-Raphson Method</a>
+                        <a href="/regula-falsi">Regula Falsi Method</a>
+                        <a href="/secant">Secant Method</a>
+                    -->
                 {% endblock %}
             </div>
+            <div class="dropdown-arrow"></div>
         </div>
-        <form method="POST">
-           {% block input_fields %}
-                <!-- Insert the input fields in this block-->
-            {% endblock %}
-        </form>
-    </div>
+        <form method="post">
+            <div class="form-row">
+                <input type="text" id="function" name="function"placeholder="Enter function">
+            </div>
+            <div class="hover-box">Enter function</div>
+            <div class="form-container">
+                <div class="labels">
+                    {% block input_labels %}
+                        <!-- Insert the input labels in this block
+                            <label for="minval">Minimum Value</label>
+                            <label for="maxval">Maximum Value</label>
+                            <label for="rerror">Relative Error</label>
+                        -->
+                    {% endblock %}
+                </div>
+                <div class="inputs">
+                    {% block input_fields %}
+                        <!-- Insert the input fields in this block
+                            <input type="text" id="minval" name="minval" placeholder="Enter minimum value">
+                            <input type="text" id="maxval" name="maxval" placeholder="Enter maximum value">
+                            <input type="text" id="rerror" name="rerror" placeholder= "Enter relative error">
+                        -->
+                    {% endblock %}
+                </div>
+            </div>
 
-    {% if table %}
-    <br><br>
-    
-    <div class="center">
-        <table border="1">
-            {% for row in table %}
-            <tr>
-                {% for item in row %}
-                <td> {{ item }} </td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </table>
+            <div class="form-sub">
+            <input type="submit" value="Calculate">
+            </div>
+        </form>
+
+        {% if table %}
+            <br><br>
+            <div>
+                <table border="1">
+                    {% for row in table %}
+                        <tr>
+                            {% for item in row %}
+                                <td> {{ item }} </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
     </div>
-    {% endif %}
 </body>
 </html>

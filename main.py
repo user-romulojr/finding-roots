@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("app.html")
+    return render_template("index.html")
 
 
 '''
@@ -31,7 +31,6 @@ cosx - xe^x
 @app.route("/bisection", methods=['POST', 'GET'])
 def bisection():
     if request.method == 'POST':
-        print("truee")
         data = {
             "function" : request.form["function"],
             "minval" : float(request.form["minval"]),
@@ -41,6 +40,7 @@ def bisection():
         table = bisection_method(data)
         return render_template("bisection.html", table=table)
     return render_template("bisection.html")
+
 
 @app.route("/fixed-point")
 def fixed_point():
