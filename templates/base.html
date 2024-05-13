@@ -45,6 +45,7 @@
                         -->
                     {% endblock %}
                 </div>
+                <div class="labels-1">{% block input_labels_1 %}{% endblock %}</div>
                 <div class="inputs">
                     {% block input_fields %}
                         <!-- Insert the input fields in this block
@@ -54,16 +55,18 @@
                         -->
                     {% endblock %}
                 </div>
+                <div class="inputs-1">{% block input_fields_1 %}{% endblock %}</div>
             </div>
 
             <div class="form-sub">
             <input type="submit" value="Calculate">
             </div>
         </form>
+        <div style="overflow-x: auto;">
 
         {% if table %}
             <br><br>
-            <div>
+            <div class="table-container">
                 <table border="1">
                     {% for row in table %}
                         <tr>
@@ -74,7 +77,13 @@
                     {% endfor %}
                 </table>
             </div>
+        
         {% endif %}
     </div>
+    </div>
+    <footer>
+        <p>@2024</p>
+    </footer>
+      
 </body>
 </html>
