@@ -36,7 +36,9 @@ def bisection():
             "rerror" : float(request.form["rerror"])
         }
         table = bisection_method(data)
-        return render_template("bisection.html", table=table)
+        last_idx = table[-1][0]
+        root = table[-1][3]
+        return render_template("bisection.html", table=table, last_idx=last_idx, root=root)
     return render_template("bisection.html")
 
 '''
@@ -56,7 +58,9 @@ def fixed_point():
             "rerror" : float(request.form["rerror"])
         }
         table = fixed_point_method(data)
-        return render_template("fixed_point.html", table=table)
+        last_idx = table[-1][0]
+        root = table[-1][1]
+        return render_template("fixed_point.html", table=table, last_idx=last_idx, root=root)
     return render_template("fixed_point.html")
 
 
@@ -77,7 +81,9 @@ def newton_raphson():
             "rerror" : float(request.form["rerror"])
         }
         table = newton_raphson_method(data)
-        return render_template("newton_raphson.html", table=table)
+        last_idx = table[-1][0]
+        root = table[-1][1]
+        return render_template("newton_raphson.html", table=table, last_idx=last_idx, root=root)
     return render_template("newton_raphson.html")
 
 '''
@@ -97,7 +103,9 @@ def regula_falsi():
             "rerror" : float(request.form["rerror"])
         }
         table = regula_falsi_method(data)
-        return render_template("regula_falsi.html", table=table)
+        last_idx = table[-1][0]
+        root = table[-1][3]
+        return render_template("regula_falsi.html", table=table, last_idx=last_idx, root=root)
     return render_template("regula_falsi.html")
 
 '''
@@ -117,7 +125,9 @@ def secant():
             "rerror" : float(request.form["rerror"])
         }
         table = secant_method(data)
-        return render_template("secant.html", table=table)
+        last_idx = table[-1][0]
+        root = table[-1][1]
+        return render_template("secant.html", table=table, last_idx=last_idx, root=root)
     return render_template("secant.html")
 
 if __name__ == '__main__':

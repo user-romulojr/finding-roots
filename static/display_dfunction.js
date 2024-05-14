@@ -1,3 +1,20 @@
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        errorSettings: { message: [""] }, // Suppress error message text
+        packages: { '[+]': ['noerrors'] }
+    },
+    options: {
+        renderActions: {
+            addError: [10, "", ""], // Suppress error rendering
+            addWarning: [10, "", ""] // Suppress warning rendering
+        }
+    },
+    loader: { load: ['[tex]/noerrors'] }
+};
+
 document.getElementById('function').addEventListener('mouseenter', function() {
     this.addEventListener('input', handleInput)
 });
