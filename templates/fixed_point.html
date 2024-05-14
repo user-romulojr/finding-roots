@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
+{% block css_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='page_layout_2.css') }}">
+{% endblock %}
+
 {% block current_method %} 
     Fixed Point Method 
 {% endblock %}
 
 {% block other_methods %} 
     <a href="/bisection">Bisection Method</a>
-    <a href="/newton-raphson">Newton-Raphson Method</a>
-    <a href="/regula-falsi">Regula Falsi Method</a>
+    <a href="/newton_raphson">Newton-Raphson Method</a>
+    <a href="/regula_falsi">Regula Falsi Method</a>
     <a href="/secant">Secant Method</a>
 {% endblock %}
 
@@ -17,9 +21,12 @@
     <label for="rerror">Relative Error</label>
 {% endblock %}
 
-
 {% block input_fields %}
-    <input type="text" id="it-function" name="it-function" placeholder= "Enter iteration function" required>
+    <input type="text" id="it-function" name="it-function" oninput="updateText()" placeholder= "Enter iteration function" required>
     <input type="number" id="point" name="point" step="any" placeholder= "Enter starting point" required>
     <input type="number" id="rerror" name="rerror" step="any" placeholder= "Enter relative error" required>
+{% endblock %}
+
+{% block display_function %}
+    <script src="{{ url_for('static', filename='display_itfunction.js') }}"></script>
 {% endblock %}

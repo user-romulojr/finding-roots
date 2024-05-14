@@ -23,7 +23,12 @@ def bisection_method(data):
     cur_error = 100.0
 
     iteration_table = [ ]
-    label = ["n", "a", "b", "x", "sgn[f(a)]", "sgn[f(p)]", "Ea"]
+    label = ["n", "a_n", "b_n", "x_n", "sgn[f(a_n)]", "sgn[f(x_n)]", "\epsilon_a"]
+    
+    it = 0
+    for it in range(len(label)):
+        label[it] = "\\(" + label[it] + "\\)"
+    
     iteration_table.append(label)
 
     # calculating the 0-th iteration

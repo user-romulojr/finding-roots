@@ -13,7 +13,7 @@ def next(x0, x1, func):
     ans = x1 - (substitute(x1, func) / slope(x1, x0, func))
     return my_round(ans, 5)
 
-def secant(data):
+def secant_method(data):
     relative_error = data["rerror"]
     num_iterations = 1000
 
@@ -26,7 +26,12 @@ def secant(data):
     cur_error = 100
 
     iteration_table = [ ]
-    label = ["n", "x(n)", "f(x(n))", "Ea"]
+    label = ["n", "x_n", "f(x_n)", "\epsilon_a"]
+
+    it = 0
+    for it in range(len(label)):
+        label[it] = "\\(" + label[it] + "\\)"
+
     iteration_table.append(label)
     # calculating the 0-th iteration
     base_case1 = [ None ] * COL_NUM
@@ -34,13 +39,13 @@ def secant(data):
 
     base_case1[0] = 0
     base_case1[1] = left
-    base_case1[2] = substitute(left)
+    base_case1[2] = substitute(left, func)
     base_case1[3] = cur_error
     iteration_table.append(base_case1)
 
     base_case2[0] = 1
     base_case2[1] = right
-    base_case2[2] = substitute(right)
+    base_case2[2] = substitute(right, func)
     base_case2[3] = cur_error
     iteration_table.append(base_case2)
 
@@ -61,3 +66,7 @@ def secant(data):
     for i in range(1,len(iteration_table)):
         iteration_table[i][-1] = my_round(iteration_table[i][-1], 2)
         print(iteration_table[i])
+    iteration_table[1][-1] = "---"
+    iteration_table[2][-1] = "---"
+
+    return iteration_table
