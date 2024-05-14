@@ -1,9 +1,9 @@
 from math import *
-from romu_math import Stack
+from romu_math import Stack, my_round
 
 
 operator = "+-*/^()"
-special_func = [ "sin", 'cos', "tan", "csc", "sec", "cot", "log"]
+special_func = [ "sin", 'cos', "tan", "csc", "sec", "cot", "log", "ln"]
 operations= { "(": 0 , ")": 1, "+":2 , "-": 2, "*": 3, "/": 3, "^" : 4}
 
 
@@ -13,6 +13,8 @@ def parse_function(func):
     i=0
     while i < len(func):
         if func[i] in operator:
+            if func[i] == "-" and (i == 0 or not (result[-1][0].isdigit() or result[-1] == "x" or result[-1] == "e")):
+                result.append("0")
             result.append(func[i])
         elif func[i].isdigit():
             left = i
@@ -24,12 +26,16 @@ def parse_function(func):
                 result.append("*")
             result.append(func[i])
         elif func[i] == "e":
-            if i > 0 and result[-1] == "x":
+            if i > 0 and (result[-1][0].isdigit() or result[-1] == "x"):
                 result.append("*")
             result.append(func[i])
         elif func[i : i + 2] == "ln":
+            if i > 0 and (result[-1][0].isdigit() or result[-1] == "x" or result[-1] == "e"):
+                result.append("*")
             result.append(func[i : i + 2])
         elif func[i : i + 3] in special_func:
+            if i > 0 and (result[-1][0].isdigit() or result[-1] == "x" or result[-1] == "e"):
+                result.append("*")
             result.append(func[i : i + 3])
         i += 1
 
@@ -38,7 +44,6 @@ def parse_function(func):
 
 def infix_to_postfix(func):
     func = parse_function(func)
-    print(func)
 
     output = [ ]
     operator_stack = Stack()
@@ -53,7 +58,7 @@ def infix_to_postfix(func):
         elif i == "(":
             operator_stack.push(i)
         elif i == ")":
-            while operations[operator_stack.top()] != "(":
+            while operator_stack.top() != "(":
                 output.append(operator_stack.top())
                 operator_stack.pop()
             operator_stack.pop()
@@ -134,4 +139,8 @@ def substitute(value, func):
             operand_stack.pop()
             operand_stack.push(result)
     
-    return operand_stack.top()
+    return my_round(operand_stack.top(), 5)
+
+func = "3logx - e ^ (-x)"
+print(parse_function(func))
+print(infix_to_postfix(func))

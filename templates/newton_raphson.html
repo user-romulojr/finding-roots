@@ -1,23 +1,34 @@
 {% extends "base.html" %}
 
+{% block css_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='page_layout_2.css') }}">
+{% endblock %}
+
 {% block current_method %} 
     Newton-Raphson Method 
 {% endblock %}
 
 {% block other_methods %} 
     <a href="/bisection">Bisection Method</a>
-    <a href="/fixed-point">Fixed Point Method</a>
-    <a href="/regula-falsi">Regula Falsi Method</a>
+    <a href="/fixed_point">Fixed Point Method</a>
+    <a href="/regula_falsi">Regula Falsi Method</a>
     <a href="/secant">Secant Method</a>
 {% endblock %}
 
-{% block input_labels_1 %}
+{% block input_labels %}
+    <label for="derivative-function">Derivative of Function</label> 
     <label for="point">Point</label>
     <label for="rerror">Relative Error</label>
 {% endblock %}
 
 
-{% block input_fields_1 %}
+{% block input_fields %}
+    <input type="text" id="derivative-function" name="derivative-function" oninput="updateText()" placeholder= "Enter derivative of function" required>
     <input type="number" id="point" name="point" step="any" placeholder= "Enter starting point" required>
     <input type="number" id="rerror" name="rerror" step="any" placeholder= "Enter relative error" required>
+    <div class="hover-box-2"></div>
+{% endblock %}
+
+{% block display_function %}
+    <script src="{{ url_for('static', filename='display_dfunction.js') }}"></script>
 {% endblock %}

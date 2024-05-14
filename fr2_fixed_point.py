@@ -1,19 +1,23 @@
 from romu_math import *
 from function_parser import substitute, infix_to_postfix
 
-def fixed_point(data):
+def fixed_point_method(data):
     relative_error = data["rerror"]
     num_iterations = 1000
     
     point = data["point"]
-
-    iteration_func = infix_to_postfix(data["iteration_function"])
+    iteration_func = infix_to_postfix(data["it-function"])
 
     COL_NUM = 4
     cur_error = 100
 
     iteration_table = [ ]
-    label = [ "n", "x(n)", "g(x(n))", "Ea" ]
+    label = [ "n", "x_n", "g(x_n)", "\epsilon_a" ]
+
+    it = 0
+    for it in range(len(label)):
+        label[it] = "\\(" + label[it] + "\\)"
+    
     iteration_table.append(label)
 
     # calculating the 0-th iteration
@@ -28,7 +32,7 @@ def fixed_point(data):
     while(iteration_table[-1][-1] > relative_error and iteration_table[-1][0] < num_iterations):
         x = iteration_table[-1][2]
         y = substitute(x, iteration_func)
-        
+
         prev_x = iteration_table[-1][1]
         ea = get_error(x, prev_x)
         
@@ -38,6 +42,8 @@ def fixed_point(data):
 
 
     for i in range(1,len(iteration_table)):
-        iteration_table[i][-1] = my_round(iteration_table[i][-1], 5)
-        print(iteration_table[i])
+        iteration_table[i][-1] = my_round(iteration_table[i][-1], 2)
+    iteration_table[1][-1] = "---"
+
+    return iteration_table
 

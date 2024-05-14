@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Roots</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='page_layout.css') }}">
-    
+    {% block css_style %}
+        <!-- Insert the css file in this block
+                <link rel="stylesheet" href="{{ url_for('static', filename='page_layout.css') }}">
+        -->
+    {% endblock %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <body>
     <div class="container">
         <h1>find roots</h1>
@@ -32,9 +37,9 @@
         </div>
         <form method="post">
             <div class="form-row">
-                <input type="text" id="function" name="function"placeholder="Enter function">
+                <input type="text" id="function" name="function" oninput="updateText()" placeholder="Enter function" required>
             </div>
-            <div class="hover-box">Enter function</div>
+            <div class="hover-box" id="hover-box-id"></div>
             <div class="form-container">
                 <div class="labels">
                     {% block input_labels %}
@@ -45,7 +50,6 @@
                         -->
                     {% endblock %}
                 </div>
-                <div class="labels-1">{% block input_labels_1 %}{% endblock %}</div>
                 <div class="inputs">
                     {% block input_fields %}
                         <!-- Insert the input fields in this block
@@ -55,8 +59,9 @@
                         -->
                     {% endblock %}
                 </div>
-                <div class="inputs-1">{% block input_fields_1 %}{% endblock %}</div>
+                <div class="hover-box-2" id="hover-box-id-2"></div>
             </div>
+
 
             <div class="form-sub">
             <input type="submit" value="Calculate">
@@ -79,11 +84,16 @@
             </div>
         
         {% endif %}
-    </div>
+        </div>
     </div>
     <footer>
-        <p>@2024</p>
+        <p>© Romulo Ramos Jr. and Ann Margarette Concepcion </p>
     </footer>
-      
+    {% block display_function %}
+        <!-- Insert the javascript file in this block
+            <script src="{{ url_for('static', filename='display_function.js') }}"></script>
+        -->
+    {% endblock %}
+
 </body>
 </html>

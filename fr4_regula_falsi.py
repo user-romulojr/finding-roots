@@ -12,7 +12,7 @@ def next(x0, x1, func):
     ans = x1-(substitute(x1, func)/slope(x1, x0, func))
     return my_round(ans, 5)
 
-def regula_falsi(data):
+def regula_falsi_method(data):
     relative_error = data["rerror"]
     num_iterations = 1000
 
@@ -25,7 +25,12 @@ def regula_falsi(data):
     cur_error = 100
 
     iteration_table = [ ]
-    label = ["n", "x(n)", "x(n+1)", "x(n+2)", "f(x(n))", "f(x(n+1))", "f(x(n+2))", "Ea"]
+    label = ["n", "x_n", "x_{n+1}", "x_{n+2}", "f(x_n)", "f(x_{n+1})", "f(x_{n+2})", "\epsilon_a"]
+
+    it = 0
+    for it in range(len(label)):
+        label[it] = "\\(" + label[it] + "\\)"
+
     iteration_table.append(label)
 
     # calculating the 0-th iteration
@@ -63,3 +68,6 @@ def regula_falsi(data):
     for i in range(1,len(iteration_table)):
         iteration_table[i][-1] = my_round(iteration_table[i][-1], 2)
         print(iteration_table[i])
+    iteration_table[1][-1] = "---"
+
+    return iteration_table

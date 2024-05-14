@@ -1,9 +1,6 @@
 from romu_math import *
 from function_parser import substitute, infix_to_postfix
 
-def find_derivative(func):
-    pass
-
 def substitute_derivative(x, func):
     return substitute(x, func)
 
@@ -12,17 +9,22 @@ def next(x, func, derivative_func):
     ans = x - (substitute(x, func) / substitute_derivative(x, derivative_func))
     return my_round(ans, 5)
 
-def newton_raphson(data):
+def newton_raphson_method(data):
     relative_error = data["rerror"]
     point = data["point"]
     func = infix_to_postfix(data["function"])
-    derivative_func = find_derivative(func)
+    derivative_func = infix_to_postfix(data["derivative-function"])
 
     COL_NUM = 5
     cur_error = 100
 
     iteration_table = [ ]
-    label = ["n", "x(n)", "f(x(n))", "f'(x(n))", "Ea"]
+    label = ["n", "x_n", "f(x_n)", "f'(x_n)", "\epsilon_a"]
+
+    it = 0
+    for it in range(len(label)):
+        label[it] = "\\(" + label[it] + "\\)"
+
     iteration_table.append(label)
 
     # calculating the 0-th iteration
@@ -50,5 +52,6 @@ def newton_raphson(data):
     for i in range(1,len(iteration_table)):
         iteration_table[i][-1] = my_round(iteration_table[i][-1], 2)
         print(iteration_table[i])
+    iteration_table[1][-1] = "---"
 
-
+    return iteration_table
